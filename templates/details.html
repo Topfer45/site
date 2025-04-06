@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="property-details">
+        <h2>Property Details</h2>
+        <div class="detail-grid">
+            <div class="main-details">
+                <p><strong>Valor:</strong> {{ house.price }}</p>
+                <p><strong>Endereço:</strong> {{ house.address }}</p>
+                <p><strong>Quartos:</strong> {{ house.bedrooms }}</p>
+                <p><strong>Banheiros:</strong> {{ house.bathrooms }}</p>
+                <p><strong>Área Construida(m²):</strong> {{ house.area_cons }}</p>
+                <p><strong>Área Terreno(m²):</strong> {{ house.area_terr }}</p>
+                <!-- <p><strong>Year Built:</strong> {{ house.year_built }}</p> -->
+            </div>
+            
+            <section class="full-gallery">
+                <h2>Photo Gallery</h2>
+                <div class="gallery-grid">
+                    {% for image in house.images %}
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='images/' + image) }}" alt="{{ house.title }} image {{ loop.index }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                    {% for feature in house.features %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="description">
+                <h3>Description</h3>
+                <p>{{ house.description }}</p>
+            </div>
+            
+            
+        </div>
+    </section>
+
+    
+
+    <section class="cta">
+        <h2>Ready to make this your new home?</h2>
+        <a href="{{ url_for('contact') }}" class="btn">Contact Agent</a>
+    </section>
+{% endblock %}

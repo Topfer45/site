@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <section class="hero">
+        <!-- Ensure house.images[0] exists -->
+        <div class="hero-image" ></div>
+        <div class="hero-text">
+            <h2>{{ house.title }}</h2>
+            <p class="address">{{ house.address }}</p>
+            <div class="quick-facts">
+                <div><i class="fas fa-bed"></i> {{ house.bedrooms }}</div>
+                <div><i class="fas fa-bath"></i> {{ house.bathrooms }}</div>
+                <div><i class="fas fa-ruler-combined"></i> {{ house.area_terr }} m²</div>
+            </div>
+            <a href="{{ url_for('details') }}" class="btn">Ver mais</a>
+        </div>
+    </section>
+
+    <section class="gallery-preview">
+        <h2>Fotos</h2>
+        <div class="image-grid">
+            {% if house.images %}
+                {% for image in house.images[:4] %}
+                <div class="image-item">
+                    <img src="{{ url_for('static', filename='images/' + image) }}" alt="{{ house.title }} image {{ loop.index }}">
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No images available for this property.</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('details') }}" class="btn">Ver mais</a>
+    </section>
+
+    <section class="cta">
+        <h2>Interessado(a)?</h2>
+        <p>Entre em contato para mais informações ou para agendamento de visitas.</p>
+        <a href="{{ url_for('contact') }}" class="btn">Mandar mensagem</a>
+    </section>
+    
+{% endblock %}
