@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Email
 import os
 import secrets
 
-app = Flask(__main__)
+app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(16)  # Generates a 32-character random string
 
 # Sample house data (you can replace with a database later)
