@@ -9,7 +9,7 @@ app = Flask(__name__)
 # Set the upload folder for images
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['SECRET_KEY'] = secrets.token_hex(16)  # Generates a 32-character random string
-app.run(host='172.31.47.206', port=5000)
+#app.run(host='172.31.47.206', port=5000)
 
 
 # Sample house data (you can replace with a database later)
